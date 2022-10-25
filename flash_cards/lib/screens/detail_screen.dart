@@ -17,15 +17,15 @@ class DetailScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(children: [
               Center(
-                child: CircleAvatar(
-                  maxRadius: 60,
-                  backgroundImage: NetworkImage(e.avatar),
-                ),
-              ),
-              Text(
-                e.firstname + "" + e.lastname,
-              ),
-              Text(e.email),
+                  // child: CircleAvatar(
+                  //   maxRadius: 60,
+                  //   backgroundImage: NetworkImage(e.avatar),
+                  // ),
+                  ),
+              // Text(
+              //   e.firstname + "" + e.lastname,
+              // ),
+              // Text(e.email),
             ]),
           ),
         ));
