@@ -12,45 +12,58 @@ class MyHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final _data = ref.watch(userDataProvider);
+    final data = ref.watch(userDataProvider);
     return Scaffold(
-        appBar: AppBar(title: const Text("RiverPood")),
-        body: _data.when(
-            data: (_data) {
-              List<UserModel> userList = _data.map((e) => e).toList();
-              return Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Column(children: [
-                  Expanded(
-                      child: ListView.builder(
-                          itemCount: userList.length,
-                          itemBuilder: (_, index) {
-                            return InkWell(
-                              // onTap: () => Navigator.of(context).push(
-                              //     MaterialPageRoute(
-                              //         builder: (context) =>
-                              //             DetailScreen(e: userList[index]))),
-                              child: Card(
-                                color: Colors.blue,
-                                elevation: 4,
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: ListTile(
-                                  title: Text(
-                                    userList[index].name,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
+      appBar: AppBar(title: const Text("RiverPood")),
+      body: data.when(
+        data: (data) {
+          List<UserModel> userList = data.map((e) => e).toList();
+          print(userList.length);
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Column(children: [
+              Expanded(
+                  child: ListView.builder(
+                      itemCount: userList.length,
+                      itemBuilder: (_, index) {
+                        return InkWell(
+                          onTap: () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      DetailScreen(e: userList[index]))),
+                          child: Card(
+                            color: Colors.blue,
+                            elevation: 4,
+                            margin: const EdgeInsets.symmetric(vertical: 10),
+                            child: ListTile(
+                              title: Text(
+                                userList[index].name,
+                                style: const TextStyle(
+                                  color: Colors.white,
                                 ),
                               ),
-                            );
-                          }))
-                ]),
-              );
-            },
-            error: (err, s) => Text(err.toString()),
-            loading: () => Center(child: CircularProgressIndicator())));
+                              subtitle: Text(userList[index].lecture[0].name,
+                                  style: const TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                        );
+                      }))
+            ]),
+          );
+        },
+        error: (err, s) => Text(err.toString()),
+        loading: () => const Center(
+          child: CircularProgressIndicator(),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //
+        },
+        // ignore: sort_child_properties_last
+        child: const Icon(Icons.navigation),
+        backgroundColor: Colors.green,
+      ),
+    );
   }
 }
