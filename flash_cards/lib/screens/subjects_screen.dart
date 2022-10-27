@@ -9,6 +9,26 @@ class SubjectsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        // backgroundColor: const Color(0xff20933A),
+        // shape: const RoundedRectangleBorder(
+        //     borderRadius: BorderRadius.all(Radius.circular(20.0))),
+        child: Container(
+          width: 60,
+          height: 60,
+          child: Icon(
+            Icons.add,
+            size: 40,
+          ),
+          decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(25),
+              gradient: LinearGradient(
+                  colors: [Color(0xff6EBD36), Color(0xff20933A)])),
+        ),
+        // child: const Icon(Icons.add),
+        onPressed: () {},
+      ),
       body: Stack(children: [
         Container(
           decoration: const BoxDecoration(
